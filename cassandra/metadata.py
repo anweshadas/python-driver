@@ -1600,7 +1600,7 @@ class _SchemaParser(object):
         query = QueryMessage(query=query_string, consistency_level=ConsistencyLevel.ONE)
         responses = self.connection.wait_for_responses((query), timeout=self.timeout, fail_on_error=False)
         (success, response) = responses[0]
-        if(success):
+        if success:
             result = dict_factory(*response.results)
             return [build_func(row) for row in result]
         else:
